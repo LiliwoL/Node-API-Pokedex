@@ -1,7 +1,20 @@
-# Pokemon.json
+# Pokemon API
 
-This repository provides a basic dataset of all Pokemons.
+# Source
 
+
+# Dépendances
+
+npm install express cors
+
+
+# Lancement
+
+npm run start
+
+
+
+___
 ## Copyright Notice
 
 Please note everything in repository are copyrighted by the Pokémon Company and its affiliates.
