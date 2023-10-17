@@ -80,6 +80,17 @@ nodemon index.js
 
 ## /hasard (pour renvoyer un pokemon au hasard)
 
+Algorithme:
+
+1. Création de la route /hasard
+2. Définition d'un numéro au hasard compris entre le minimum et le maximum
+    1. Quel est l'id minimum?
+    2. Quel est l'id maximum?
+        1. Quelle est la taille du pokedex?
+3. Renvoi du pokemeon ayant l'id **hasard**
+
+- https://www.w3schools.com/js/js_random.asp
+
 ## /pokemon/ + un identifiant en paramètre (pour renvoyer un pokemon à partir d'un identifiant, si le pokemon correspondant existe)
 
 ## /pokemon/ + un nom (pour renvoyer un pokemon à partir d'un nom, si le pokemon correspondant existe)
