@@ -2,6 +2,11 @@
 
 Serveur Backend en Node JS
 
+## Objectifs
+
+- Découverte de Node JS
+- Comprendre le principe des API
+
 # Mise en place
 
 - Création d'un dépôt git local sur WSL
