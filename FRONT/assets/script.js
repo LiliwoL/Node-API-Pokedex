@@ -18,9 +18,10 @@ fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web
                         console.info ( "@SUCCESS-02" );
                         console.log( datas );
 
-                        // Création d'un nouvel élément HTML
-                        let divContenu = document.getElementById( "contenu" );
-                        divContenu.innerHTML ( datas );
+                        // Génération du HTML
+                        datas.forEach(
+                            data => generateHTML(data)
+                        );
                     }
                     ,
                     // Erreur de la promesse de trasnformation de la réponse en JSON
@@ -41,12 +42,32 @@ fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web
 
 
 /*  -----------------------------------------------------
-    2. Fonction de création des lignes HTML des users
+    2. Fonction de génération du HTML
     ----------------------------------------------------- */
-
-function generateLine( datas )
+function generateHTML( data )
 {
-    // Generae a pokemon line
+    // Generate a pokemon table
+
+    let pokemonTable =  document.getElementById( "contenu" );
+    let generatedPokemonLine = document.createElement( 'TR' );
+
+    // __________ Création de la structure __________ //
+
+    // Id
+    let tdIDHTML = document.createElement( 'TD' );
+    tdIDHTML.innerText = data.id;
+    tdIDHTML.setAttribute( "class", "align-middle" );
+
+    let tdNomHTML = document.createElement( 'TD' );
+    tdNomHTML.setAttribute( "class", "align-middle" );
+    tdNomHTML.innerText = data.name.french;
+
+    // Intégration dans le DOM
+    generatedPokemonLine.appendChild(tdIDHTML);
+    generatedPokemonLine.appendChild(tdNomHTML);
+
+    pokemonTable.appendChild(generatedPokemonLine);
+
 }
 
     

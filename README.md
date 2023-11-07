@@ -116,6 +116,12 @@ Algorithme:
 # Dépendances
 
 
+---
+
+# Frontend
+
+Vous trouverez un début de frontend dans le dossier **FRONT**
+
 
 
 
