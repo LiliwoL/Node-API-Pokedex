@@ -22,8 +22,12 @@ const express = require('express');
 const app = express();
 // To solve the cors issue
 const cors=require('cors');
-app.use(express.static('public'));
 app.use(cors());
+
+// Pour que le serveur "serve" des fichiers statiques comme des images
+// Ici dans le dossier FILES
+app.use(express.static('FILES'));
+
 
 // Lancement du serveur et attendre
 app.listen(
