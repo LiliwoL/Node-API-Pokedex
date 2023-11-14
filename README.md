@@ -6,6 +6,7 @@ Serveur Backend en Node JS
 
 - Découverte de Node JS
 - Comprendre le principe des API
+- Méthodes HTTP
 
 # Mise en place
 
@@ -19,7 +20,7 @@ git init .
 ```bash
 sudo apt install nodejs npm
 # Dépendances
-npm install express
+npm install express cors
 ```
 
 - Installation de **nodemon** pour avoir un node qui se relance à chaque modification du fichier

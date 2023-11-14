@@ -2,7 +2,17 @@
  *  Serveur Backend Pokedex
  */
 
-//console.log ("Hello World!");
+// *******************************
+    // Liste des dépendances:
+    // express, cors, nodemon
+// *******************************
+
+
+
+
+// *******************************
+// *** CONSTANTES, et définition des variables
+// *******************************
 
 // Définir l'emplacement des fichiers bases de données
 const POKEDEX_SRC = "./DATA/pokedex.json";
@@ -12,20 +22,28 @@ const IMAGES_SRC = "./FILES/images";
 
 // Définir un port
 const PORT = 5001;
+// *******************************
+
+
+// *******************************
+// Dépendances et charment de modules
+// *******************************
+const fs = require('fs');
+
+
 
 // ************************************************
 // Lancer un serveur express sur un port défini
 // ************************************************
-const fs = require('fs');
-// npm install express
 const express = require('express');
 const app = express();
-// To solve the cors issue
-const cors=require('cors');
+
+// Pour éviter d'avoir des erreurs CORS
+const cors= require('cors');
 app.use(cors());
 
 // Pour que le serveur "serve" des fichiers statiques comme des images
-// Ici dans le dossier FILES
+// Ici dans le dossier FILES, là où sont placées toutes les images
 app.use(express.static('FILES'));
 
 
