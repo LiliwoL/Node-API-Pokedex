@@ -2,6 +2,11 @@
 
 Serveur Backend en Node JS
 
+## Arborescence
+
+Tous les fichiers du serveur backend sont dans le dossier **BACKEND**.
+
+
 ## Objectifs
 
 - Découverte de Node JS
