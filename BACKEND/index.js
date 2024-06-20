@@ -2,16 +2,12 @@
  *  Serveur Backend Pokedex
  */
 
-//console.log ("Hello World!");
-
 // Définir l'emplacement des fichiers bases de données
 const POKEDEX_SRC = "./DATA/pokedex.json";
-
 // Définir l'emplacement des images
 const IMAGES_SRC = "./FILES/images";
 
-
-// Définir un port
+// Définir un port pour le serveur
 const PORT = 5001;
 
 // ************************************************
@@ -33,7 +29,12 @@ app.listen(
     }
 )
 
-// Crée la route / qui renvoie "Tout"
+
+// *********************************************
+// Route POKEMON ALL
+// Path: /
+// Method: GET
+// *********************************************
 app.get(
     '/',
     findAllPokemon
@@ -53,9 +54,13 @@ function findAllPokemon(request, response)
 }
 
 
-// *********************************************
 
-// Find One Randomly
+
+// *********************************************
+// Route POKEMON RANDOM
+// Path: /hasard
+// Method: GET
+// *********************************************
 app.get('/hasard', findByIdRandomly);
 
 function findByIdRandomly(request, response)
@@ -74,6 +79,105 @@ function findByIdRandomly(request, response)
 
     // 4. Sélection du pokemon au hasard
     reply = pokedex[random];
+
+    response.send(reply);
+}
+
+
+
+// *********************************************
+// Route POKEMON BY ID
+// Path: /pokemon/:id (id doit être un entier)
+// Method: GET
+// *********************************************
+app.get('/pokemon/:id(\\d+)', findById);
+
+function findById(request, response)
+{
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let id = request.params.id;
+
+    let reply;
+
+    // Recherche de l'id
+    if(pokedex[id -1]) {
+        reply = pokedex[id -1];
+    }
+    else {
+        reply = {
+            status:"Not Found"
+        }
+    }
+
+    response.send(reply);
+}
+
+
+
+// *********************************************
+// Route POKEMON BY NAME
+// Le nom doit être le nom Français du Pokemon
+// Path: /pokemon/name/:name (name doit être une string)
+// Method: GET
+// *********************************************
+app.get('/pokemon/name/:name', findByName);
+
+function findByName(request, response)
+{
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let name = request.params.name;
+
+    // Formatage du nom en majuscules
+    name = name.toUpperCase();
+
+    const reply = pokedex.filter(
+        (pokemon) => pokemon.name.french.toUpperCase() === name
+    );
+
+    response.send(reply);
+}
+
+// *********************************************
+// Route POKEMON BY TYPE
+// Path: /pokemon/type/:type (type doit être une string)
+// Method: GET
+// *********************************************
+app.get('/pokemon/type/:type', findByType);
+
+function findByType(request, response)
+{
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let type = request.params.type;
+
+    console.log(`Recherche du type: ${type}`)
+
+    // Formatage du type en majuscules
+    type = type.toUpperCase();
+
+    const reply = pokedex.filter(
+        (pokemon) =>
+            pokemon.type.some(
+                (t) => t.toUpperCase() === type
+            )
+    );
 
     response.send(reply);
 }
