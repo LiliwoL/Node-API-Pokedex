@@ -3,7 +3,7 @@ let ENDPOINT = "http://127.0.0.1:5001";
 // Appel
 fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch
     .then(
-        // Premier fonction de callback, c'est la fonction en cas de succès
+        // Première fonction de callback, c'est la fonction en cas de succès
         // Le paramètre retournée est la réponse
         function ( response ) {
             console.info ( "@SUCCESS-01" );

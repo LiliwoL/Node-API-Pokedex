@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "5f41cfd0-f02f-4fdd-a896-70228b8273b1",
+		"name": "API Pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2209621",
+		"_collection_link": "https://orange-astronaut-204458.postman.co/workspace/My-Workspace~8319e3bc-2ba7-4bd8-8f46-571e7523c6f5/collection/2209621-5f41cfd0-f02f-4fdd-a896-70228b8273b1?action=share&source=collection_link&creator=2209621"
+	},
+	"item": [
+		{
+			"name": "List All",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get Random",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
