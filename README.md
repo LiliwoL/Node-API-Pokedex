@@ -1,11 +1,16 @@
-# Pokemon API
+```
+  ____       _                                   _    ____ ___ 
+ |  _ \ ___ | | _____ _ __ ___   ___  _ __      / \  |  _ \_ _|
+ | |_) / _ \| |/ / _ \ '_ ` _ \ / _ \| '_ \    / _ \ | |_) | | 
+ |  __/ (_) |   <  __/ | | | | | (_) | | | |  / ___ \|  __/| | 
+ |_|   \___/|_|\_\___|_| |_| |_|\___/|_| |_| /_/   \_\_|  |___|
+```
 
-Serveur Backend en Node JS
+# Serveur Backend en Node JS
 
 ## Arborescence
 
 Tous les fichiers du serveur backend sont dans le dossier **BACKEND**.
-
 
 ## Objectifs
 
@@ -14,7 +19,7 @@ Tous les fichiers du serveur backend sont dans le dossier **BACKEND**.
 
 # Mise en place
 
-- Création d'un dépôt git local sur WSL
+- Création d'un **dépôt git local sur WSL**
 ```bash
 git init .
 ```
@@ -22,7 +27,7 @@ git init .
 - Installation de Node, npm et des dépendances
 
 ```bash
-sudo apt install nodejs npm
+sudo apt install nodejs npm -y
 # Dépendances
 npm install express
 ```
@@ -74,7 +79,6 @@ app.listen(
 )
 ```
 
-
 Pour le lancer, tapez:
 
 ```bash
@@ -84,7 +88,11 @@ node index.js
 nodemon index.js
 ```
 
+---
+
 # Routes à créer
+
+> https://expressjs.com/en/guide/routing.html
 
 ## / (Pour tout afficher)
 
@@ -104,8 +112,6 @@ Algorithme:
 ## /pokemon/ + un identifiant en paramètre (pour renvoyer un pokemon à partir d'un identifiant, si le pokemon correspondant existe)
 
 ## /pokemon/ + un nom (pour renvoyer un pokemon à partir d'un nom, si le pokemon correspondant existe)
-
-
 
 
 # Ce qu'il faudra faire ultérieurement
