@@ -46,12 +46,8 @@ app.get(
 // Fonction qui est appelée par la route / en GET
 function findAllPokemon(request, response)
 {
-    console.log("---------------------------");
-    console.log("Route appelée: /");
-    console.info("Method: " + request.method);
-    console.info("URL: " + request.url);
-    console.info("Params: " + request.body);
-    console.log("---------------------------");
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
 
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
@@ -75,6 +71,9 @@ app.get('/hasard', findByIdRandomly);
 
 function findByIdRandomly(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
@@ -83,9 +82,10 @@ function findByIdRandomly(request, response)
 
     // 3. Au hasard
     let nb_pokemon = pokedex.length;
-    console.log("Nb de pokemon " + nb_pokemon);
+    console.log("Nb total de pokemon " + nb_pokemon);
     
     let random = Math.floor(Math.random() * nb_pokemon) + 1;
+    console.log("Pokemon au hasard " + random);
 
     // 4. Sélection du pokemon au hasard
     reply = pokedex[random];
@@ -104,6 +104,9 @@ app.get('/pokemon/:id(\\d+)', findById);
 
 function findById(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
@@ -140,6 +143,9 @@ app.get('/pokemon/name/:name', findByName);
 
 function findByName(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
@@ -168,6 +174,9 @@ app.get('/pokemon/type/:type', findByType);
 
 function findByType(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
@@ -190,4 +199,12 @@ function findByType(request, response)
     );
 
     response.send(reply);
+}
+
+function debugRoute(request){
+    console.log("---------------------------");
+    console.log("Route appelée: " + request.url);
+    console.info("Method: " + request.method);
+    console.info("Params: " + request.body);
+    console.log("---------------------------");
 }
