@@ -12,6 +12,23 @@
 
 Tous les fichiers du serveur backend sont dans le dossier **BACKEND**.
 
+Les dossiers **DATA** et **FILES** sont à récupérer sur le NAS.
+
+```
+BACKEND
+├── DATA
+│   ├── items.json
+│   ├── moves.json
+│   ├── pokedex.json
+│   └── types.json
+├── FILES
+│   ├── images
+│   ├── sprites
+│   └── thumbnails
+├── index.js
+└── README.md
+``` 
+
 ## Objectifs
 
 - Découverte de Node JS

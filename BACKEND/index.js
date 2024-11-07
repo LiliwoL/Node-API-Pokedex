@@ -25,6 +25,9 @@ app.listen(
     PORT, 
     '127.0.0.1', 
     () => {
+        // Effacer la console
+        console.log('\033[2J');
+        // Afficher un message de lancement du serveur
         console.log('Server Pokedex is listening on ' + PORT);
     }
 )
@@ -40,9 +43,16 @@ app.get(
     findAllPokemon
 )
 
-// Fonction qui est appelée par la route /
+// Fonction qui est appelée par la route / en GET
 function findAllPokemon(request, response)
 {
+    console.log("---------------------------");
+    console.log("Route appelée: /");
+    console.info("Method: " + request.method);
+    console.info("URL: " + request.url);
+    console.info("Params: " + request.body);
+    console.log("---------------------------");
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
