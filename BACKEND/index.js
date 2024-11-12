@@ -18,7 +18,13 @@ const fs = require('fs');
 
 // npm install express
 const express = require('express');
+const cors = require('cors')
 const app = express();
+
+// CORS
+app.use(cors())
+// Express va servir les fichiers statiques placés dans le dossier FILES
+app.use(express.static('FILES'))
 
 // Lancement du serveur et attendre
 app.listen(

@@ -136,6 +136,14 @@ Algorithme:
 
 ## /pokemon/ + un nom (pour renvoyer un pokemon à partir d'un nom, si le pokemon correspondant existe)
 
+## Servir les images des pokemons
+
+> https://expressjs.com/en/starter/static-files.html
+
+Cette route va renvoyer l'image du pokemon à partir de son identifiant.
+
+Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/001.png
+
 
 ---
 
@@ -148,29 +156,33 @@ Algorithme:
 
 ---
 
-# Source
+# Frontend
 
+Vous trouverez un début de frontend dans le dossier **FRONT**.
 
-# Dépendances
+![](readme_docs/144f49f2.png)
 
+> Vous allez très certainement rencontrer des problèmes de CORS.
+![](readme_docs/caac8343.png)
+
+> https://developer.mozilla.org/fr/docs/Web/HTTP/CORS
+
+Pour y remédier, vous pouvez installer une extension sur votre navigateur pour désactiver la sécurité CORS.
+Sinon, on va voir comment le faire en Node JS.
+
+```js
+const express = require('express');
+const cors = require('cors')
+const app = express();
+
+// CORS
+app.use(cors())
+// Express va servir les fichiers statiques placés dans le dossier FILES
+app.use(express.static('FILES'))
+```
 
 ---
 
-# Frontend
-
-Vous trouverez un début de frontend dans le dossier **FRONT**
-
-
-
-
-
-# Lancement
-
-npm run start
-
-
-
-___
 ## Copyright Notice
 
 Please note everything in repository are copyrighted by the Pokémon Company and its affiliates.
