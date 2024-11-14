@@ -156,6 +156,16 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 
 ---
 
+# Bonus
+
+- Ajouter les liens vers les images des pokemons
+![](.README_images/dfed9917.png)
+- Créer une route qui renvoie les types de pokemons
+- Créer une route qui renvoie les attaques de pokemons
+- Créer une route qui renvoie les objets de pokemons
+
+---
+
 # Frontend
 
 ![](readme_docs/c8f9c7c6.png)

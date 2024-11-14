@@ -4,11 +4,10 @@
 
 // Définir l'emplacement des fichiers bases de données
 const POKEDEX_SRC = "./DATA/pokedex.json";
-// Définir l'emplacement des images
-const IMAGES_SRC = "./FILES/images";
 
 // Définir un port pour le serveur
 const PORT = 5001;
+const URL = '127.0.0.1';
 
 // ************************************************
 
@@ -29,7 +28,7 @@ app.use(express.static('FILES'))
 // Lancement du serveur et attendre
 app.listen(
     PORT, 
-    '127.0.0.1', 
+    URL,
     () => {
         // Effacer la console
         console.log('\033[2J');
@@ -122,18 +121,25 @@ function findById(request, response)
     // Récupération du paramètre
     let id = request.params.id;
 
+    // Par défaut, la réponse est vide
     let reply;
+    // Par défaut, le code de retour est 200
+    let code = 200;
 
     // Recherche de l'id
     if(pokedex[id -1]) {
         reply = pokedex[id -1];
     }
     else {
+        // Code 404
+        code = 404;
         reply = {
             status:"Not Found"
         }
     }
 
+    // Réponse
+    response.status(code);
     response.send(reply);
 }
 
@@ -164,10 +170,30 @@ function findByName(request, response)
     // Formatage du nom en majuscules
     name = name.toUpperCase();
 
-    const reply = pokedex.filter(
+    // Par défaut, la réponse est vide
+    let reply;
+    // Par défaut, le code de retour est 200
+    let code = 200;
+
+    // Recherche
+    reply = pokedex.filter(
         (pokemon) => pokemon.name.french.toUpperCase() === name
     );
 
+    if (reply.length === 0) {
+        // Changement du contenu de la réponse
+        reply = {
+            status: "Not Found"
+        }
+        code = 404;
+    }else{
+        // Ajout des images
+        reply[0].images = addPokemonImages(reply[0].id);
+    }
+
+
+    // Réponse
+    response.status(code);
     response.send(reply);
 }
 
@@ -205,6 +231,18 @@ function findByType(request, response)
     );
 
     response.send(reply);
+}
+
+// *********************************************
+function addPokemonImages(pokemonId)
+{
+    // Ajoute les 000 devant l'id si nécessaire
+    const paddedId = pokemonId.toString().padStart(3, '0');
+
+    return {
+        image: `http://${URL}:${PORT}/images/${paddedId}.png`,
+        thumbnail: `http://${URL}:${PORT}/thumbnails/${paddedId}.png`
+    }
 }
 
 function debugRoute(request){
