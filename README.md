@@ -158,6 +158,8 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 
 # Frontend
 
+![](readme_docs/c8f9c7c6.png)
+
 Vous trouverez un début de frontend dans le dossier **FRONT**.
 
 ![](readme_docs/144f49f2.png)
