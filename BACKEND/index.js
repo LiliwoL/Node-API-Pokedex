@@ -223,13 +223,32 @@ function findByType(request, response)
     // Formatage du type en majuscules
     type = type.toUpperCase();
 
-    const reply = pokedex.filter(
+    let reply;
+    // Par défaut, le code de retour est 200
+    let code = 200;
+
+    // Recherche
+    reply = pokedex.filter(
         (pokemon) =>
             pokemon.type.some(
                 (t) => t.toUpperCase() === type
             )
     );
 
+    if (reply.length === 0) {
+        // Changement du contenu de la réponse
+        reply = {
+            status: "Not Found"
+        }
+        code = 404;
+    }else{
+        // Ajout des images
+        reply[0].images = addPokemonImages(reply[0].id);
+    }
+
+
+    // Réponse
+    response.status(code);
     response.send(reply);
 }
 
