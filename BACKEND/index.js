@@ -114,6 +114,12 @@ app.get('/pokemon/hp/:hp', findByHP);
 // *********************************************
 function findAllPokemon(request, response)
 {
+    // Vérification dans la requete de la présence d'un parametre GET apikey
+    if (request.query.apikey !== "cledelisa") {
+        response.status(403).send('Erreur, apikey incorrecte!');
+        return;
+    }
+
     // Appel de la fonction de debug des routes
     debugRoute(request);
 
