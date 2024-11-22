@@ -1,4 +1,4 @@
-let ENDPOINT = "http://127.0.0.1:5001";
+let ENDPOINT = "http://127.0.0.1:5001/?apikey=apikeysio";
 
 // Appel
 fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch
@@ -26,7 +26,7 @@ fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web
                     ,
                     // Erreur de la promesse de trasnformation de la réponse en JSON
                     function ( error ) {
-                        console.error ( "@ERROR-01 de trasnformation de la réponse en JSON" );
+                        console.error ( "@ERROR-01 de transformation de la réponse en JSON" );
                         console.error( error );
                     }
                 )
