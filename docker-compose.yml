@@ -39,7 +39,7 @@ services:
     image: nginx:latest
 
     ports:
-      - "80:80"
+      - "808:80"
     volumes:
       # On monte le dossier FRONTEND dans le dossier racine (DocumentRoot) de Nginx
       # Apache = /var/www/html  | Nginx = /usr/share/nginx/html

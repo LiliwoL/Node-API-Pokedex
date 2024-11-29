@@ -9,6 +9,7 @@ COPY BACKEND/package*.json ./
 
 # Installer les dépendances globales si nécessaire
 RUN npm install -g nodemon
+RUN npm install
 
 # Copier le reste des fichiers de l'application
 COPY BACKEND/ .
