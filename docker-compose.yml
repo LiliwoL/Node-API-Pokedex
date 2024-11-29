@@ -24,7 +24,7 @@ services:
     environment:
       - NODE_ENV=development
     # Commande exécutée au démarrage du service
-    command: sh -c "npm install && nodemon index.js"
+    #command: sh -c "npm install && nodemon index.js"
   ################################################################################################
 
 
