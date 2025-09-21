@@ -119,7 +119,7 @@ nodemon index.js
 
 ## / (Pour tout afficher)
 
-## /hasard (pour renvoyer un pokemon au hasard)
+## /random (pour renvoyer un pokemon au hasard)
 
 Algorithme:
 
@@ -139,6 +139,8 @@ Algorithme:
 
 ## /pokemon/ + un nom (pour renvoyer un pokemon à partir d'un nom, si le pokemon correspondant existe)
 
+---
+
 ## Servir les images des pokemons
 
 > https://expressjs.com/en/starter/static-files.html
@@ -154,7 +156,7 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 
 - Création du dépôt distant GitHub
 - Clonage du dépôt distant sur la VM
-- Réaliser la partie frontend
+- Réaliser la partie **frontend**
 - Faire en sorte que les routes renvoient également les images liées aux pokemons
 - Clé API pour autorisation
 
@@ -162,8 +164,7 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 
 # Bonus
 
-- Ajouter les liens vers les images des pokemons
-![](.README_images/dfed9917.png)
+- Ajouter les liens vers les images des pokemons 
 - Créer une route qui renvoie les types de pokemons
 - Créer une route qui renvoie les attaques de pokemons
 - Créer une route qui renvoie les objets de pokemons
@@ -174,7 +175,7 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 
 ![](readme_docs/c8f9c7c6.png)
 
-Vous trouverez un début de frontend dans le dossier **FRONT**.
+Vous trouverez un début de frontend dans le dossier **FRONTEND**.
 
 ![](readme_docs/144f49f2.png)
 
@@ -196,5 +197,3 @@ app.use(cors())
 // Express va servir les fichiers statiques placés dans le dossier FILES
 app.use(express.static('FILES'))
 ```
-
----

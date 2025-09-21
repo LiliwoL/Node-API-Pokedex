@@ -1,3 +1,4 @@
+// Configuration du EndPoint
 let ENDPOINT = "http://127.0.0.1:5001";
 
 // Appel
@@ -6,7 +7,7 @@ fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web
         // Premier fonction de callback, c'est la fonction en cas de succès
         // Le paramètre retournée est la réponse
         function ( response ) {
-            console.info ( "@SUCCESS-01" );
+            console.info( "@SUCCESS-01" );
 
             // Par defaut, l'API Joke renvoie les données au format JSON
             // Transformer la réponse en JSON interprétable
