@@ -87,11 +87,160 @@ function findByIdRandomly(request, response)
     // 3. Au hasard
     let nb_pokemon = pokedex.length;
     console.log("Nb de pokemon " + nb_pokemon);
-    
+
     let random = Math.floor(Math.random() * nb_pokemon) + 1;
 
     // 4. Sélection du pokemon au hasard
     reply = pokedex[random];
 
     response.send(reply);
+}
+
+// *********************************************
+// Fonction qui est appelée par la route /pokemon/:id en GET
+// *********************************************
+function findById(request, response)
+{
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let id = request.params.id;
+
+    let reply;
+
+    // Recherche de l'id
+    if(pokedex[id -1]) {
+        reply = pokedex[id -1];
+    }
+    else {
+        reply = false;
+    }
+
+    // Envoi des données
+    if (reply) {
+        response.send(reply);
+    } else {
+        response.status(404).send('Erreur, pokemon pas trouvé!');
+    }
+}
+
+// *********************************************
+// Fonction qui est appelée par la route /pokemon/name en GET
+// *********************************************
+function findByName(request, response)
+{
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let name = request.params.name;
+
+    // Formatage du nom en majuscules
+    name = name.toUpperCase();
+
+    const reply = pokedex.filter(
+        (pokemon) => pokemon.name.french.toUpperCase() === name
+    );
+
+    // Envoi des données
+    if (reply.length > 0) {
+        response.send(reply);
+    } else {
+        response.status(404).send('Erreur, pokemon pas trouvé!');
+    }
+}
+
+// *********************************************
+// Fonction qui est appelée par la route /type en GET
+// *********************************************
+function findByType(request, response)
+{
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let type = request.params.type;
+
+    console.log(`Recherche du type: ${type}`)
+
+    // Formatage du type en majuscules
+    type = type.toUpperCase();
+
+    const reply = pokedex.filter(
+        (pokemon) =>
+            pokemon.type.some(
+                (t) => t.toUpperCase() === type
+            )
+    );
+
+    // Envoi des données
+    if (reply.length > 0) {
+        response.send(reply);
+    } else {
+        response.status(404).send('Erreur, pokemon pas trouvé!');
+    }
+}
+
+// *********************************************
+// Fonction qui est appelée par la route /type en GET
+// *********************************************
+function findByHP(request, response)
+{
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
+    // 1. Lecture du fichier
+    let data = fs.readFileSync(POKEDEX_SRC);
+
+    // 2. Analyse du JSON
+    let pokedex = JSON.parse(data);
+
+    // Récupération du paramètre
+    let hp = request.params.hp;
+
+    console.log(`Recherche du nombre de HP: ${hp}`);
+
+    const reply = pokedex.filter(
+        (pokemon) =>
+            pokemon.base.HP === hp
+    );
+
+    // Envoi des données
+    if (reply.length > 0) {
+        response.send(reply);
+    } else {
+        response.status(404).send('Erreur, pokemon pas trouvé!');
+    }
+}
+
+
+
+// *********************************************
+// Fonction de debug des routes
+// *********************************************
+function debugRoute(request){
+    console.log("---------------------------");
+    console.log("Route appelée: " + request.url);
+    console.info("Method: " + request.method);
+    console.info("Params: " + request.body);
+    console.log("---------------------------");
 }

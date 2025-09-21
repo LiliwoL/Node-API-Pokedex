@@ -58,27 +58,13 @@ function generateHTML( data )
     tdIDHTML.innerText = data.id;
     tdIDHTML.setAttribute( "class", "align-middle" );
 
-    // Nom
     let tdNomHTML = document.createElement( 'TD' );
     tdNomHTML.setAttribute( "class", "align-middle" );
     tdNomHTML.innerText = data.name.french;
 
-    // Image Cell
-    let tdImgHTML = document.createElement( 'TD' );
-    tdImgHTML.setAttribute( "class", "align-middle" );
-
-    // Img
-    let idPokemonWithZeros = String(data.id).padStart(3, '0');   // Cette ligne va ajouter des zeros devant data.id
-    let imgHTML = document.createElement( 'img' );
-    imgHTML.setAttribute( "src", "http://127.0.0.1:5001/thumbnails/" + idPokemonWithZeros + ".png" );
-
-    // Img to Img Cell
-    tdImgHTML.appendChild(imgHTML);
-
     // Intégration dans le DOM
     generatedPokemonLine.appendChild(tdIDHTML);
     generatedPokemonLine.appendChild(tdNomHTML);
-    generatedPokemonLine.appendChild(tdImgHTML);
 
     pokemonTable.appendChild(generatedPokemonLine);
 

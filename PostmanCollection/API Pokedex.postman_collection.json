@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "c82e81fd-0755-439d-9393-8a3c2847d745",
+		"name": "API - TP Pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2209621",
+		"_collection_link": "https://orange-astronaut-204458.postman.co/workspace/8319e3bc-2ba7-4bd8-8f46-571e7523c6f5/collection/2209621-c82e81fd-0755-439d-9393-8a3c2847d745?action=share&source=collection_link&creator=2209621"
+	},
+	"item": [
+		{
+			"name": "List All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Random",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/hasard",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"hasard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/pokemon/name/Bulbizarre",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"pokemon",
+						"name",
+						"Bulbizarre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}:{{PORT}}/pokemon/id/45",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"pokemon",
+						"id",
+						"45"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "PORT",
+			"value": "5001",
+			"type": "string"
+		}
+	]
+}
