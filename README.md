@@ -57,6 +57,8 @@ npm install -g nodemon
 
 > Il peut être nécessaire de réaliser cette commande en **sudo**
 
+---
+
 # Création du script du serveur
 
 On crée un fichier serveur nommé *index.js*.
@@ -154,6 +156,7 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 - Clonage du dépôt distant sur la VM
 - Réaliser la partie frontend
 - Faire en sorte que les routes renvoient également les images liées aux pokemons
+- Clé API pour autorisation
 
 ---
 

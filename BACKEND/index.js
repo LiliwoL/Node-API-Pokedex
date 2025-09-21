@@ -33,6 +33,9 @@ const express = require('express');
 // Création du serveur
 // ************************************************
 const app = express();
+// Pour éviter d'avoir des erreurs CORS
+const cors = require('cors');
+app.use(cors());
 
 app.listen(
     PORT,           // Port d'écoute
