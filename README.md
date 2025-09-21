@@ -10,7 +10,7 @@ Serveur Backend en Node JS
 
 # Mise en place
 
-- Création d'un dépôt git local sur WSL
+- Création d'un dépôt git local
 ```bash
 git init .
 ```
@@ -121,11 +121,17 @@ Algorithme:
 
 # Frontend
 
-Vous trouverez un début de frontend dans le dossier **FRONT**
+Vous trouverez un début de frontend dans le dossier **FRONT**.
 
+## Exemples
 
+https://codepen.io/brundolf/pen/MjpMRj
 
+## Pistes d'amélioration
 
+* Script qui demande le nom de 2 joueurs, et un nombre de pokemon dans la pokeball. Le script pioche au hasard X pokemon et les assigne aux joueurs. Impossible d'assigner le même pokemon.
+* 
+---
 
 # Lancement
 
