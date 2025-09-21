@@ -36,7 +36,7 @@ const app = express();
 
 app.listen(
     PORT,           // Port d'écoute
-    '127.0.0.1',    // Adresse IP (localhost)
+    '0.0.0.0',    // Adresse IP (localhost) On met 0.0.0.0 pour que TOUTES les interfaces soient à l'écoute
     () => {
         console.log('Server Pokedex is listening on ' + PORT);  // Message dans la console
     }
