@@ -1,5 +1,5 @@
 // Configuration du EndPoint
-let ENDPOINT = "http://127.0.0.1:5001";
+let ENDPOINT = "http://127.0.0.1:5001/random";
 
 // Appel
 fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch
@@ -20,9 +20,7 @@ fetch( ENDPOINT ) // Fetch des datas : https://developer.mozilla.org/fr/docs/Web
                         console.log( datas );
 
                         // Génération du HTML
-                        datas.forEach(
-                            data => generateHTML(data)
-                        );
+                        return generateHTML(datas);
                     }
                     ,
                     // Erreur de la promesse de trasnformation de la réponse en JSON
