@@ -16,15 +16,18 @@ services:
     # On expose le port 5001 de l'hôte vers le container
     ports:
       - "5001:5001"
+
+    working_dir: /app
+
     # Volumes pour monter les fichiers de l'application Node.js (placés dans le dossier BACKEND)
     volumes:
-      - ./BACKEND:/app
+      - ./BACKEND:/app/src
       # On monte le dossier node_modules pour éviter de réinstaller les dépendances à chaque redémarrage du conteneur
-      - /app/node_modules
+      #- ./BACKEND/node_modules:/app/node_modules
     environment:
       - NODE_ENV=development
     # Commande exécutée au démarrage du service
-    command: sh -c "npm install && nodemon index.js"
+    #command: sh -c "npm install && nodemon src/index.js"
   ################################################################################################
 
 
@@ -43,4 +46,6 @@ services:
     volumes:
       # On monte le dossier FRONTEND dans le dossier racine (DocumentRoot) de Nginx
       # Apache = /var/www/html  | Nginx = /usr/share/nginx/html
-      - ./FRONTEND:/usr/share/nginx/html
+      - ./FRONTEND:/usr/share/nginx/html/
+      # Config Nginx personnalisée
+      - ./config/nginx.conf:/etc/nginx/nginx.conf

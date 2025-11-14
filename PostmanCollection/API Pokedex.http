@@ -1,0 +1,17 @@
+# API - TP Pokedex
+
+###
+# @name List All
+GET {{URL}}:{{PORT}}/
+
+###
+# @name Get Random
+GET {{URL}}:{{PORT}}/hasard
+
+###
+# @name Get By Name
+GET {{URL}}:{{PORT}}/pokemon/name/Bulbizarre
+
+###
+# @name Get By Type
+GET {{URL}}:{{PORT}}/pokemon/id/45

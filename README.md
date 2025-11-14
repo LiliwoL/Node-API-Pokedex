@@ -168,7 +168,7 @@ Exemple, pour le pokemon ayant l'id 1, l'url sera http://localhost:5001/images/0
 - Créer une route qui renvoie les types de pokemons
 - Créer une route qui renvoie les attaques de pokemons
 - Créer une route qui renvoie les objets de pokemons
-
+ 
 ---
 
 # Frontend
@@ -197,3 +197,13 @@ app.use(cors())
 // Express va servir les fichiers statiques placés dans le dossier FILES
 app.use(express.static('FILES'))
 ```
+
+---
+
+# Docker
+
+Accès Backend
+http://localhost:5001
+
+Accès Frontend
+http://localhost:808
