@@ -50,12 +50,6 @@ sudo apt install nodejs npm -y
 npm install express cors
 ```
 
-- Installation de **nodemon** pour avoir un node qui se relance à chaque modification du fichier
-```bash
-npm install -g nodemon
-```
-
-> Il peut être nécessaire de réaliser cette commande en **sudo**
 
 ---
 
@@ -105,10 +99,8 @@ app.listen(
 Pour le lancer, tapez:
 
 ```bash
-node index.js
-
 # Pour lancer plutôt en monitoring
-nodemon index.js
+node --watch index.js
 ```
 
 ---
