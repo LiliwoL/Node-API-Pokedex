@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/pokeball-icone.ico" />
+
+    <!-- CSS -->
+    <link href="assets/css/cardPokemon.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- CSS -->
+
+</head>
+<!-- HEAD -->
+
+<!-- BODY -->
+
+<body>
+
+    <!-- BUTTON -->
+    <section class="container_button">
+        <div class="background_button" onclick="viewAllPokemon()"><button>Afficher tout</button></div>
+        <div class="background_button" onclick="viewPopup()"><button>Rechercher</button></div>
+        <div class="background_button"><button onclick="randomPokemon()">aléatoire</button></div>
+        <div class="background_button"><button onclick="rulePokemon()">jouer</button></div>
+    </section>
+    <!-- BUTTON -->
+
+    <!-- CONTAINER CARD POKEMON -->
+    <section class="container_pokemon" id="contenaireImage">
+    </section>
+    <!-- CONTAINER CARD POKEMON -->
+
+    <!-- POPUP SEARCH POKEMON -->
+    <section class="popup" id="popup_search_pokemon">
+        <label class="labelle_search_barre" for="search_barre">Pokémon: </label>
+        <input class="search_barre" id="search_barre_pokemon" name="search_barre" type="text">
+        <img class="pokeball_icone1" src="./assets/images/pokeball-icone.png">
+        <table class="search_table">
+            <thead>
+                <th>Num</th>
+                <th>Img</th>
+                <th>Nom </th>
+            </thead>
+
+            <tbody id="body_table">
+
+            </tbody>
+        </table>
+        <img class="pokeball_icone2" src="./assets/images/pokeball-icone.png">
+    </section>
+    <!-- POPUP SEARCH POKEMON -->
+
+    <!-- POPUP RULE POKEMON -->
+    <section class="popup" id="popup_rule_pokemon">
+        <img class="pokeball_icone1" src="./assets/images/pokeball-icone.png">
+        <h2 class="title">RÉGLE DU JEU</h2>
+        <p class="rule">
+            1. une carte piocher au hasard<br>
+            2. choisir une capacité du pokémon (attaque, défense, PV...)<br>
+            3. comparer la capacité choisie avec l'adversaire (bot)<br>
+            4. la capacité supérieure à l'adversaire l'emporte<br>
+        </p>
+        <div class="buttun_rule">
+            <div class="background_button"><button onclick="cancelRule()">annuler</button></div>
+            <div class="background_button" id="play"><button onclick="playPokemon()">jouer</button></div>
+        </div>
+        <img class="pokeball_icone2" src="./assets/images/pokeball-icone.png">
+    </section>
+    <!-- POPUP RULE POKEMON -->
+
+    <!-- CARD EFFECT -->
+    <style class="hover"></style>
+    <!-- CARD EFFECT -->
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- JS -->
+
+</body>
+<!-- BODY -->
+
+</html>
