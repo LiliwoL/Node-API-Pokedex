@@ -36,6 +36,11 @@ const app = express();
 // Pour éviter d'avoir des erreurs CORS
 const cors = require('cors');
 app.use(cors());
+// Utilisation du composant Router
+const router = express.Router();
+
+// Définir un préfixe à TOUTES les routes
+app.use('/api/v1', router);
 
 app.listen(
     PORT,           // Port d'écoute
@@ -51,11 +56,11 @@ app.listen(
 // *********************************************
 
 // ***************************************
-// Route principale qui sert l'url /
+// Route principale qui sert l'url /pokemons
 // Elle renverra la liste de TOUS les pokemon
 // ***************************************
-app.get(
-    '/',
+router.get(
+    '/pokemons',
     findAllPokemon
 )
 
@@ -77,7 +82,7 @@ function findAllPokemon(request, response)
 // Route qui sert l'url /random
 // Elle renverra UN pokemon au hasard
 // *********************************************
-app.get('/random', findByIdRandomly);
+router.get('/pokemons/random', findByIdRandomly);
 
 function findByIdRandomly(request, response)
 {

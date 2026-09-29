@@ -41,31 +41,38 @@ const app = express();
 // Pour éviter d'avoir des erreurs CORS
 const cors= require('cors');
 app.use(cors());
+// Utilisation du composant Router
+const router = express.Router();
 
 // Pour que le serveur "serve" des fichiers statiques comme des images
 // Ici dans le dossier FILES, là où sont placées toutes les images
 app.use(express.static('FILES'));
 
+// Définir un préfixe à TOUTES les routes
+app.use('/api/v1', router);
 
 // Lancement du serveur et attendre
 app.listen(
     PORT,
-    '127.0.0.1',
+    '0.0.0.0',
     () => {
         console.log('Server Pokedex is listening on ' + PORT);
     }
 )
 
 
+// *********************************************
+// Création des routes
+// *********************************************
 
 
 // *********************************************
 // Route par défaut
-// Path: /
+// Path: /pokemons
 // Method: GET
 // *********************************************
-app.get(
-    '/',
+router.get(
+    '/pokemons',
     findAllPokemon
 )
 
@@ -84,11 +91,11 @@ function findAllPokemon(request, response)
 
 
 // *********************************************
-// Route HASARD
-// Path: /hasard
+// Route random
+// Path: /pokemons/random
 // Method: GET
 // *********************************************
-app.get('/hasard', findByIdRandomly);
+router.get('/pokemons/random', findByIdRandomly);
 
 function findByIdRandomly(request, response)
 {
@@ -113,10 +120,10 @@ function findByIdRandomly(request, response)
 
 // *********************************************
 // Route POKEMON BY ID
-// Path: /pokemon/:id (id doit être un entier)
+// Path: /pokemons/:id (id doit être un entier)
 // Method: GET
 // *********************************************
-app.get('/pokemon/:id(\\d+)', findById);
+router.get('/pokemons/:id(\\d+)', findById);
 
 function findById(request, response)
 {
@@ -147,10 +154,10 @@ function findById(request, response)
 
 // *********************************************
 // Route POKEMON BY NAME
-// Path: /pokemon/:name (name doit être une string)
+// Path: /pokemons/:name (name doit être une string)
 // Method: GET
 // *********************************************
-app.get('/pokemon/:name', findByName);
+router.get('/pokemons/:name', findByName);
 
 function findByName(request, response)
 {
