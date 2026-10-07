@@ -6,8 +6,6 @@
  *  |____/ \___|_|    \_/ \___|\__,_|_|    |____/ \__,_|\___|_|\_\___|_| |_|\__,_| |_|   \___/|_|\_\___|\__,_|\___/_/\_\
  */
 
-//console.log ("Hello World!");
-
 // ************************************************
 // CONFIGURATION
 // ************************************************
@@ -42,6 +40,7 @@ const router = express.Router();
 // Définir un préfixe à TOUTES les routes
 app.use('/api/v1', router);
 
+
 app.listen(
     PORT,           // Port d'écoute
     '0.0.0.0',    // Adresse IP (localhost) On met 0.0.0.0 pour que TOUTES les interfaces soient à l'écoute
@@ -55,16 +54,50 @@ app.listen(
 // Création des routes
 // *********************************************
 
-// ***************************************
-// Route principale qui sert l'url /pokemons
-// Elle renverra la liste de TOUS les pokemon
-// ***************************************
-router.get(
-    '/pokemons',
-    findAllPokemon
-)
 
-// Fonction qui est appelée par la route /
+// *********************************************
+// Route par défaut
+// Path: /pokemons
+// Method: GET
+// *********************************************
+router.get('/pokemons', findAllPokemon);
+
+// *********************************************
+// Route random
+// Path: /pokemons/random
+// Method: GET
+// *********************************************
+router.get('/pokemons/random', findOneByRandom);
+
+// *********************************************
+// Route POKEMON BY ID
+// Path: /pokemons/:id (id doit être un entier)
+// Method: GET
+// *********************************************
+router.get('/pokemons/:id(\\d+)', findOneById);
+
+// *********************************************
+// Route POKEMON BY NAME
+// Path: /pokemons/:name (name doit être une string)
+// Method: GET
+// *********************************************
+router.get('/pokemons/:name', findOneByName);
+
+
+// *********************************************
+
+
+
+// *********************************************
+// Création des fonctions qui sont appelées par les routes
+// *********************************************
+
+/**
+ * Fonction qui est appelée par la route /
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
 function findAllPokemon(request, response)
 {
     // 1. Lecture du fichier
@@ -77,14 +110,13 @@ function findAllPokemon(request, response)
     response.send(pokedex);
 }
 
-
-// *********************************************
-// Route qui sert l'url /random
-// Elle renverra UN pokemon au hasard
-// *********************************************
-router.get('/pokemons/random', findByIdRandomly);
-
-function findByIdRandomly(request, response)
+/**
+ * Fonction qui est appelée par la route /pokemons/random en GET
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
+function findOneByRandom(request, response)
 {
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
@@ -104,10 +136,13 @@ function findByIdRandomly(request, response)
     response.send(reply);
 }
 
-// *********************************************
-// Fonction qui est appelée par la route /pokemon/:id en GET
-// *********************************************
-function findById(request, response)
+/**
+ * Fonction qui est appelée par la route /pokemons/:id en GET
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
+function findOneById(request, response)
 {
     // Appel de la fonction de debug des routes
     debugRoute(request);
@@ -139,10 +174,14 @@ function findById(request, response)
     }
 }
 
-// *********************************************
-// Fonction qui est appelée par la route /pokemon/name en GET
-// *********************************************
-function findByName(request, response)
+
+/**
+ * Fonction qui est appelée par la route /pokemons/:name en GET
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
+function findOneByName(request, response)
 {
     // Appel de la fonction de debug des routes
     debugRoute(request);
@@ -163,17 +202,16 @@ function findByName(request, response)
         (pokemon) => pokemon.name.french.toUpperCase() === name
     );
 
-    // Envoi des données
-    if (reply.length > 0) {
-        response.send(reply);
-    } else {
-        response.status(404).send('Erreur, pokemon pas trouvé!');
-    }
+    response.send(reply);
 }
 
-// *********************************************
-// Fonction qui est appelée par la route /type en GET
-// *********************************************
+
+/**
+ * Fonction qui est appelée par la route /type en GET
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
 function findByType(request, response)
 {
     // Appel de la fonction de debug des routes
@@ -208,9 +246,14 @@ function findByType(request, response)
     }
 }
 
-// *********************************************
-// Fonction qui est appelée par la route /type en GET
-// *********************************************
+
+
+/**
+ * Fonction qui est appelée par la route /hp en GET
+ * 
+ * @param {*} request 
+ * @param {*} response 
+ */
 function findByHP(request, response)
 {
     // Appel de la fonction de debug des routes
@@ -242,9 +285,10 @@ function findByHP(request, response)
 
 
 
-// *********************************************
-// Fonction de debug des routes
-// *********************************************
+/**
+ * Fonction de debug des routes
+ * @param {*} request 
+ */
 function debugRoute(request){
     console.log("---------------------------");
     console.log("Route appelée: " + request.url);
