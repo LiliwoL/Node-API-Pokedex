@@ -1,0 +1,54 @@
+openapi: '3.0.3'
+info:
+  title: API Pokedex
+  version: '1.0'
+servers:
+  - url: http://{host}:{port}/api/{api_version}
+    description: Serveur API Pokedex
+    variables:
+      host:
+        default: 192.168.1.163
+      port:
+        default: "5001"
+      api_version:
+        default: v1
+paths:
+  # GET ALL POKEMONS
+  /pokemons:  
+    get:
+      summary: Get all pokemons
+      responses:
+        '200':
+          description: Get all pokemons
+          content:
+            application/json:
+              schema:
+                type: array
+
+  # GET POKEMON BY ID
+  /pokemons/{id}:
+    get:
+      summary: Get One pokemon by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pokemon to retrieve
+          required: true
+          schema:
+            type: string
+          example: "1"
+      responses:
+        '200':
+          description: The pokemon with this IDexists
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: The pokemon with this ID does not exist
+          content:
+            text/plain:
+              schema:
+                type: string
+
+      
