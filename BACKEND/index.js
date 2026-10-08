@@ -6,6 +6,10 @@
  *  |____/ \___|_|    \_/ \___|\__,_|_|    |____/ \__,_|\___|_|\_\___|_| |_|\__,_| |_|   \___/|_|\_\___|\__,_|\___/_/\_\
  */
 
+// V2
+// Import de la fonction de limitation du nombre de requêtes par IP
+const limitRequests = require('./limit_requests.js');
+
 // ************************************************
 // CONFIGURATION
 // ************************************************
@@ -100,6 +104,16 @@ router.get('/pokemons/:name', findOneByName);
  */
 function findAllPokemon(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
+    // 0. Limitation du nombre de requêtes par IP
+    if (!limitRequests(request, 1, 60000)) {
+        console.log(`Too many requests from IP: ${request.ip}`);
+        
+        return response.status(429).json({ message: 'Too many requests. Please try again later.' });
+    }
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
@@ -118,6 +132,9 @@ function findAllPokemon(request, response)
  */
 function findOneByRandom(request, response)
 {
+    // Appel de la fonction de debug des routes
+    debugRoute(request);
+
     // 1. Lecture du fichier
     let data = fs.readFileSync(POKEDEX_SRC);
 
