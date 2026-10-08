@@ -39,7 +39,7 @@ paths:
           example: "1"
       responses:
         '200':
-          description: The pokemon with this IDexists
+          description: The pokemon with this ID exists
           content:
             application/json:
               schema:
